@@ -70,9 +70,10 @@
 				((1 . 2))))))
 
 (defun block-move (move player game source &optional target)
-	(if (coup::random-bool)
-		(coup::random-elem (coup::block-cards move))))
-
+	(cond
+		((= (game-rounds game) 1) ())
+		((< (game-rounds game) 1) (coup::random-elem (coup::block-cards move)))
+		(t())))
 (defun challenge-card (card player game source &optional target)
 	(coup::random-bool))
 
