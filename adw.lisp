@@ -52,7 +52,8 @@
 
 
 	
-(defun reveal-card (player game) (+ (random 2) 1))
+(defun reveal-card (player game) 
+	(if (coup::random-bool) 1) 2)
 
 (defun select-exchange (player game)
 	;; Randomly select some combination of cards to exchange
