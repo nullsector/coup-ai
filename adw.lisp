@@ -53,6 +53,7 @@
 
 	
 (defun reveal-card (player game) 
+	;; randomly decide which card to reveal
 	(if (coup::random-bool) 1) 2)
 
 (defun select-exchange (player game)
@@ -75,6 +76,7 @@
 		((= (game-rounds game) 1) ())
 		((< (game-rounds game) 1) (coup::random-elem (coup::block-cards move)))
 		(t())))
+		
 (defun challenge-card (card player game source &optional target)
 	(coup::random-bool))
 
