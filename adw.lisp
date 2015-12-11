@@ -52,9 +52,16 @@
 
 
 	
-(defun reveal-card (player game) 
-	;; randomly decide which card to reveal
-	(if (coup::random-bool) 1) 2)
+(defun reveal-card (player game)
+        (if (= 2 (length (player-hand player)))
+                (cond
+                        ((eq (car (player-hand player)) 'Duke) 2)
+                        ((eq (car (player-hand player)) 'Captain) 2)
+                        ((t())))
+        (coup::random-elem
+                        '(NIL
+                                ((1 . 1))
+                                ((1 . 2))))))
 
 (defun select-exchange (player game)
 	;; Randomly select some combination of cards to exchange
