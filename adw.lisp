@@ -78,14 +78,16 @@
 				((1 . 1))
 				((1 . 2))))))
 
-(defun block-move (move player game source &optional target)
-	(cond
-		((= (game-rounds game) 1) ())
-		((< (game-rounds game) 1) (coup::random-elem (coup::block-cards move)))
-		(t())))
-		
+(defun block-move (move player game source &optional target)  ;if we have 1 card left we wont block any more.
+(if (< 1 (length (player-hand player)))
+      (coup::random-elem (coup::block-cards move))))
+
+
 (defun challenge-card (card player game source &optional target)
-	(coup::random-bool))
+(cond
+		((= (length(player-hand player)) 2) (coup::random-bool)) ; challenge random when we have 2 cards on hand
+		((< 1 (length (player-hand player))) ()) 		 ; Stop challenge when we have 1 card left
+		(t())))
 
 (defun event (e game arguments)
 	(cond
